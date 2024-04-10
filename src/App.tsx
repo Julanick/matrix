@@ -1,22 +1,26 @@
 import React, { useState } from 'react';
 import { Button, Dialog, DialogContent, DialogTitle, IconButton, Box } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
-import SliderComponent from './components/SliderComponent';
-import Matrix from './components/Matrix';
+import SliderComponent from './components/SliderComponent.tsx';
+import Matrix from './components/Matrix.tsx';
 import data3class from './mockData/3class.json';
 import data15class from './mockData/15class.json';
-import { marks } from './constants/slider'
+import { marks } from './constants/slider.tsx'
 import './App.css';
 
+interface MatrixData {
+  data: number[][];
+  labels: any[][];
+}
+
 const App = () => {
-  const [sliderValue, setSliderValue] = useState([0, 10]);
-  const [open, setOpen] = useState(false);
-  const [matrixData, setMatrixData] = useState(data15class);
+  const [sliderValue, setSliderValue] = useState<[number, number]>([0, 10]);
+  const [open, setOpen] = useState<boolean>(false);
+  const [matrixData, setMatrixData] = useState<MatrixData>(data15class);
 
   //min 10x10 max 10x10
-  const handlerSliderChange = (event, value) => {
-    const min = value[0];
-    const max = value[1];
+  const handlerSliderChange = (event: any, value: number | number[]) => {
+    const [min, max] = value as number[];
 
     const minChanged = sliderValue[0] !== min;
 
@@ -53,7 +57,7 @@ const App = () => {
     setSliderValue([min, max]);
   }
 
-  const hadleButtonClick = (data) => {
+  const hadleButtonClick = (data: MatrixData) => {
     const min = Math.min(data.data.length, 10);
     setMatrixData(data);
     setOpen(true);
@@ -83,7 +87,7 @@ const App = () => {
           </Box>
         </DialogTitle>
 
-        <DialogContent display='flex' alignItems='center'>
+        <DialogContent>
           <Box display='flex' alignItems='center' justifyContent='space-around'>
             <Box display='flex' alignItems='center'>
               <p className='verticalAxis'>Прогноз <span className='salePrice'>SalePrice</span></p>
