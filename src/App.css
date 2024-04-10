@@ -1,0 +1,56 @@
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+p
+{
+  margin: 0;
+}
+
+body {
+  font-family: 'SF UI Text', sans-serif;
+}
+
+p {
+  font-size: 14px;
+}
+
+.verticalAxis {
+  transform: rotate(-90deg);
+  text-align: center;
+  margin: -60px;
+}
+
+.horizontalAxis {
+  text-align: center;
+  margin: 20px auto;
+}
+
+.titleModal {
+  font-size: 20px;
+  font-weight: 700;
+  color: #18274A;
+  }
+
+.descriptionModal{
+  color: #747D92;
+  margin-bottom: 20px;
+}
+
+.salePrice{
+  color: #A3A9B7;
+}
+
+
+.css-rnmm7m-MuiPaper-root-MuiDialog-paper{
+  border-radius: 12px !important;
+}
